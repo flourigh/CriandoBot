@@ -524,6 +524,9 @@
 .ti-envelope:before {
 	content: "\e6a6";
 }
+.ti-paper:before {
+	content: "\f1d9"
+}
 .ti-download:before {
 	content: "\e6a7";
 }
