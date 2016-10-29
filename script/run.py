@@ -46,10 +46,10 @@ def github():
 					os.system('git add -A && git commit -S -m "Update GH-Pages"')
 					print('{} - {} - {}'.format(readme_data, name, 'OK'))
 				else:
-					os.system('cd sites/{}/ git add -A && git commit -S -m "Update GH-Pages"'.format(name))
+					os.system('cd sites/{}/ && git add -A && git commit -S -m "Update GH-Pages"'.format(name))
 					status = write_text(text, name)
 					if status:
-						os.system('cd sites/{}/ git add -A && git commit -S -m "Update GH-Pages"'.format(name))
+						os.system('cd sites/{}/ && git add -A && git commit -S -m "Update GH-Pages"'.format(name))
 						print('{} - {} - {}'.format(readme_data, name, 'OK'))
 					else:
 						print('{} - {} - {}'.format(readme_data, name, 'No has git-repo'))
