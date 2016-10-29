@@ -43,14 +43,13 @@ def github():
 									html_text=supermd.build())
 				status = write_text(text, name)
 				if status:
-					os.system('git add -A && git commit -S -m "Update GH-Pages"')
+					os.system('cd sites/{}/ && git add -A && git commit -S -m "Update GH-Pages" && git config credential.helper store && git push'.format(name))
 					print('{} - {} - {}'.format(readme_data, name, 'OK'))
 				else:
-					os.system('cd sites/{}/ && git add -A && git commit -S -m "Update GH-Pages" && ls'.format(name))
+					os.system('cd sites/ && git clone https://github.com/TiagoDanin/{}.git -b gh-pages'.format(name))
 					status = write_text(text, name)
-					break
 					if status:
-						os.system('cd sites/{}/ && git add -A && git commit -S -m "Update GH-Pages"'.format(name))
+						os.system('cd sites/{}/ && git add -A && git commit -S -m "Update GH-Pages" && git config credential.helper store && git push'.format(name))
 						print('{} - {} - {}'.format(readme_data, name, 'OK'))
 					else:
 						print('{} - {} - {}'.format(readme_data, name, 'No has git-repo'))
