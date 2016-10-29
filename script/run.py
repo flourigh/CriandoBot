@@ -48,6 +48,7 @@ def github():
 				else:
 					os.system('cd sites/{}/ && git add -A && git commit -S -m "Update GH-Pages"'.format(name))
 					status = write_text(text, name)
+					return
 					if status:
 						os.system('cd sites/{}/ && git add -A && git commit -S -m "Update GH-Pages"'.format(name))
 						print('{} - {} - {}'.format(readme_data, name, 'OK'))
