@@ -14,7 +14,7 @@ imagem['RomanNumerals'] = 'lua.png'
 imagem['SiD'] = 'sid.jpg'
 imagem['SiDBot'] = 'sid.jpg'
 imagem['SpotifyTelegram'] = 'spotify.png'
-push_git = False
+push_git = True
 
 def write_text(text, name):
 	try:
@@ -53,6 +53,8 @@ def github():
 		img = 'github.png'
 		if name in imagem:
 			img = imagem[name]
+		else:
+			img = 'github.png'
 
 		if name in ignore:
 			print('{} - {} - {}'.format(readme_data, name, 'IGNORE'))
