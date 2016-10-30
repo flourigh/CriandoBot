@@ -23,6 +23,8 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+/* https://themify.me/themify-icons */
+
 .ti-wand:before {
 	content: "\e600";
 }
