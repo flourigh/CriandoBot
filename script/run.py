@@ -3,7 +3,7 @@ import requests
 import os
 import re
 
-ignore = ['TiagoDanin.github.io', 'SendCH-Telegram']
+ignore = ['TiagoDanin.github.io', 'SendCH-Telegram', 'DesenvolvimentoDeBots']
 imagem = {}
 imagem['Atom-TerminalColor'] = 'atom.png'
 imagem['GenesiPassword'] = 'lua.png'
