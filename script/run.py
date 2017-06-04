@@ -1,5 +1,6 @@
 from SuperMarkdown import SuperMarkdown
 import requests
+import datetime
 import os
 import re
 
@@ -7,14 +8,20 @@ ignore = ['TiagoDanin.github.io', 'SendCH-Telegram', 'DesenvolvimentoDeBots']
 imagem = {}
 imagem['Atom-TerminalColor'] = 'atom.png'
 imagem['GenesiPassword'] = 'lua.png'
+imagem['Gnome-Decode'] = 'python.png'
+imagem['Gnome-WebApp'] = 'python.png'
+imagem['GX-Password'] = 'lua.png'
 imagem['htmlEntities-for-lua'] = 'lua.png'
+imagem['Indicator-Reactions'] = 'python.png'
 imagem['PythonColorize'] = 'color.png'
 imagem['Quiz-Corona'] = 'corona.png'
 imagem['RomanNumerals'] = 'lua.png'
 imagem['SiD'] = 'sid.jpg'
 imagem['SiDBot'] = 'sid.jpg'
 imagem['SpotifyTelegram'] = 'spotify.png'
-push_git = True
+imagem['uHosts'] = 'python.png'
+imagem['XTLanguage'] = 'lua.png'
+push_git = False
 
 def write_text(text, name):
 	try:
@@ -29,6 +36,8 @@ def github():
 	url = 'https://api.github.com/users/TiagoDanin/repos'
 	data = requests.get(url)
 	data_json = data.json()
+	date = datetime.datetime.now()
+	date_commit = 'H{}:M{}/D{}/Y{}'.format(date.hour, date.month, date.day, date.year)
 	for v in data_json:
 		name = v['name']
 		watchers = v['watchers']
@@ -42,10 +51,10 @@ def github():
 		else:
 			watchers = '<i class="ti-star"></i>' + str(watchers) + '  '
 
-		if not v['language']:
+		if not language:
 			language = ''
 		else:
-			language = '<i class="ti-tag"></i>' + str(v['language']) + '  '
+			language = '<i class="ti-tag"></i>' + str(language) + '  '
 
 		info = '{lang}{watchers}<i class="ti-download"></i>  {size}KB'.format(lang=language,
 																			watchers=watchers,
@@ -53,8 +62,6 @@ def github():
 		img = 'github.png'
 		if name in imagem:
 			img = imagem[name]
-		else:
-			img = 'github.png'
 
 		if name in ignore:
 			print('{} - {} - {}'.format(readme_data, name, 'IGNORE'))
@@ -72,18 +79,19 @@ def github():
 									img=img,
 									description=description,
 									repo=name,
+									date_commit=date_commit,
 									html_text=re.sub('</style>', '-->', (re.sub('<style>', '<!--', supermd.build()))))
 				status = write_text(text, name)
 				if status:
 					if push_git:
-						os.system('cd sites/{}/ && git add -A && git commit -S -m "Update GH-Pages" && git config credential.helper store && git push'.format(name))
+						os.system('cd sites/{}/ && git add -A && git commit -S -m "Update GH-Pages {}" && git config credential.helper store && git push'.format(name, date_commit))
 					print('{} - {} - {}'.format(readme_data, name, 'OK'))
 				else:
-					os.system('cd sites/ && git clone https://github.com/TiagoDanin/{}.git -b gh-pages'.format(name))
+					os.system('cd sites/ && git clone https://github.com/TiagoDanin/{}.git -b gh-pages'.format(name, date))
 					status = write_text(text, name)
 					if status:
 						if push_git:
-							os.system('cd sites/{}/ && git add -A && git commit -S -m "Update GH-Pages" && git config credential.helper store && git push'.format(name))
+							os.system('cd sites/{}/ && git add -A && git commit -S -m "Update GH-Pages {}" && git config credential.helper store && git push'.format(name, date_commit))
 						print('{} - {} - {}'.format(readme_data, name, 'OK'))
 					else:
 						print('{} - {} - {}'.format(readme_data, name, 'No has git-repo'))
