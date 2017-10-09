@@ -201,7 +201,7 @@ jQuery(document).ready(function($){
 		element.style["transform"] = property+"("+value+")";
 	}
 
-	//based on http://stackoverflow.com/questions/542938/how-do-i-get-the-number-of-days-between-two-dates-in-javascript
+	//based on https://stackoverflow.com/questions/542938/how-do-i-get-the-number-of-days-between-two-dates-in-javascript
 	function parseDate(events) {
 		var dateArrays = [];
 		events.each(function(){
@@ -239,7 +239,7 @@ jQuery(document).ready(function($){
 
 	/*
 		How to tell if a DOM element is visible in the current viewport?
-		http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
+		https://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
 	*/
 	function elementInViewport(el) {
 		var top = el.offsetTop;

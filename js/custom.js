@@ -174,7 +174,7 @@
 		/* 
 		Smooth Scroll
 		Reference:
-		http://stackoverflow.com/questions/7717527/jquery-smooth-scrolling-when-clicking-an-anchor-link
+		https://stackoverflow.com/questions/7717527/jquery-smooth-scrolling-when-clicking-an-anchor-link
 		______________________________________
 		*/
 		var $root = $('html, body');
