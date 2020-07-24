@@ -1,5 +1,5 @@
 module.exports = {
   title: 'Criando bot',
   description: 'Criador do Projeto: VycktorStark',
-  base: '/docandrun/'
+  base: '/criandobot/'
 }
